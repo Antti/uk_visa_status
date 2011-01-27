@@ -10,4 +10,8 @@ class UkVisaApplication < VisaApplication
     end.click_button
     result_page.search("#lblScanStatus").inner_text
   end
+
+  def self.flag
+    'gb'
+  end
 end

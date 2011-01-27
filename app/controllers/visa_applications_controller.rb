@@ -1,6 +1,14 @@
 class VisaApplicationsController < ApplicationController
   # GET /visa_applications
   # GET /visa_applications.xml
+
+  before_filter do
+    [:uk_visa_application, :dk_visa_application].each do |type|
+      if va = params[type]
+        params[:visa_application] = va
+      end
+    end
+  end
   def index
     @visa_applications = VisaApplication.all
 

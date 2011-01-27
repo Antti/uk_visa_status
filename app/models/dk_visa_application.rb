@@ -1,13 +1,18 @@
 class DkVisaApplication < VisaApplication
   validate :reference_number, :format => %r{\w{4}/\d{6}/\d{4}}
   def fetch_new_status
-    page = Mechanize.new.get("http://www.denmarkvac-ua.com/track.html")
-    result_page = page.form_with(:name => "form1") do |f|
-      f.txtDat = date_of_birth.day
-      f.txtMont = date_of_birth.month
-      f.txtYea = date_of_birth.year
-      f.txtRefNO = reference_number
+    page = Mechanize.new{|n| n.log = Logger.new(STDOUT)}.get("https://www.visaservices.firm.in/Denmark-Global-Tracking/TrackingParam.aspx?P=xTsyV66sjtxnpCJBo4njvBlHEVb7OmzOTHTEx9q1H7Y=")
+    result_page = page.form_with(:name => "aspnetForm") do |f|
+      rn = reference_number.split("/")
+      f.send("ctl00$CPH$txtR2Part1=",rn[0])
+      f.send("ctl00$CPH$txtR2Part2=",rn[1])
+      f.send("ctl00$CPH$txtR2Part3=",rn[2])
+      f.send("ctl00$CPH$txtDOB$txtDate=",date_of_birth.strftime("%d/%m/%Y"))
     end.click_button
-    result_page.search("#lblScanStatus").inner_text
+    result_page.search("td.fnstatus table td").inner_text
+  end
+
+  def self.flag
+    'dk'
   end
 end

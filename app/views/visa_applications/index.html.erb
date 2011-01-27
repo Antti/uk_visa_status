@@ -3,7 +3,7 @@
   <thead>
   <tr>
     <th>Name</th>
-    <th>Reference number</th>
+    <!-- ><th>Reference number</th> -->
     <th>Date of birth</th>
     <th>Status</th>
     <th></th>
@@ -15,8 +15,8 @@
 
 <% @visa_applications.each do |visa_application| %>
   <tr data-id="<%= visa_application.id %>">
-    <td><%= visa_application.name %></td>
-    <td><%= visa_application.reference_number %></td>
+    <td><%= visa_application.name %><%= flag_img(visa_application.flag)%></td>
+    <!-- ><td><%= visa_application.reference_number %></td> -->
     <td><%= visa_application.date_of_birth %></td>
     <td class='visa_status'><%= visa_application.status %>(<%= visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")%>)</td>
     <td><%= link_to 'Update Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status' %></td>
