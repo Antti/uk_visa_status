@@ -1,7 +1,9 @@
 UkVisa::Application.routes.draw do
-  resources :visa_applications do
-    member do
-      get 'update_status'
+  [:visa_applications,:uk_visa_application,:dk_visa_application].each do |r|
+    resources r,:controller => "visa_applications" do
+      member do
+        get 'update_status'
+      end
     end
   end
   
