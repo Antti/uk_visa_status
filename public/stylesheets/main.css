@@ -18,3 +18,7 @@ table.fancy caption {
   margin-left: inherit;
   margin-right: inherit;
 }
+
+.no_wrap{
+  white-space: pre;
+}
