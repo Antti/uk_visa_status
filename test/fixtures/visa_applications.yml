@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reference_number: MyString
+  date_of_birth: 2011-01-27
+
+two:
+  reference_number: MyString
+  date_of_birth: 2011-01-27

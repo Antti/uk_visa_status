@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reference number:</b>
+  <%= @visa_application.reference_number %>
+</p>
+
+<p>
+  <b>Date of birth:</b>
+  <%= @visa_application.date_of_birth %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @visa_application.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_visa_application_path(@visa_application) %> |
+<%= link_to 'Back', visa_applications_path %>
