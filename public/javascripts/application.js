@@ -11,7 +11,7 @@ UKVisa = {
     $("tr[data-id="+id+"] td.visa_status").append("<img src='/images/loading-spinner.gif' alt='spinner' />");
     $.get('/visa_applications/'+id+'/update_status',function(data){
       visa_application = data.visa_application;
-      $("tr[data-id="+id+"] td.visa_status").text(visa_application.status).effect("highlight");
+      $("tr[data-id="+id+"] td.visa_status").text(visa_application.status+"("+visa_application.updated_at+")").effect("highlight");
     });
   }
 }

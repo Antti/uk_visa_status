@@ -1,4 +1,5 @@
 class VisaApplication < ActiveRecord::Base
+  validate :reference_number, :format => %r{\w{4}/\d{6}/\d{6}/\d}
   def update_status
     page = Mechanize.new.get("https://www.vfs.org.in/Ukg-PassportTracking/ApplicantTrackStatus.aspx?Data=zB/rldwRJCtWdUiUjektSA%3d%3d")
     result_page = page.form_with(:name => "form1") do |f|

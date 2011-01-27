@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110127101540) do
+ActiveRecord::Schema.define(:version => 20110127115018) do
 
   create_table "visa_applications", :force => true do |t|
     t.string   "reference_number"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110127101540) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "name"
   end
 
 end
