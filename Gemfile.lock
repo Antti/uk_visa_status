@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -70,6 +71,9 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    whenever (0.6.2)
+      aaronh-chronic (>= 0.3.9)
+      activesupport (>= 2.3.4)
 
 PLATFORMS
   ruby
@@ -79,3 +83,4 @@ DEPENDENCIES
   mechanize
   rails (= 3.0.3)
   sqlite3
+  whenever

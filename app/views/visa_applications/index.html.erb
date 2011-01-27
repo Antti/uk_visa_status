@@ -19,7 +19,7 @@
     <td><%= visa_application.name %></td>
     <td><%= visa_application.reference_number %></td>
     <td><%= visa_application.date_of_birth %></td>
-    <td class='visa_status'><%= visa_application.status %>(<%= visa_application.updated_at.to_s%>)</td>
+    <td class='visa_status'><%= visa_application.status %>(<%= visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")%>)</td>
     <td><%= link_to 'Update Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status' %></td>
     <td><%= link_to 'Show', visa_application %></td>
     <td><%= link_to 'Edit', edit_visa_application_path(visa_application) %></td>

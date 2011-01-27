@@ -8,6 +8,7 @@ gem 'rails', '3.0.3'
 gem 'sqlite3', :require => 'sqlite3'
 gem 'mechanize'
 gem 'jquery-rails', '>= 0.2.6'
+gem 'whenever', :require => false
 
 # Use unicorn as the web server
 # gem 'unicorn'
