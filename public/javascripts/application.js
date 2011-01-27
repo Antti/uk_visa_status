@@ -6,11 +6,11 @@
   }
 )(jQuery);
 
-UKVisa = {
+Visa = {
   update_status: function(id){
     $("tr[data-id="+id+"] td.visa_status").append("<img src='/images/loading-spinner.gif' alt='spinner' />");
     $.get('/visa_applications/'+id+'/update_status',function(data){
-      visa_application = data.visa_application;
+      visa_application = data;
       $("tr[data-id="+id+"] td.visa_status").text(visa_application.status+"("+visa_application.updated_at+")").effect("highlight");
     });
   }
@@ -18,7 +18,7 @@ UKVisa = {
 
 $().ready(function(){
   $("a.update_visa_status").click(function(){
-    UKVisa.update_status($(this).parents("tr").attr("data-id"));
+    Visa.update_status($(this).parents("tr").attr("data-id"));
     return false;
   })
 })
