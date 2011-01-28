@@ -9,7 +9,7 @@
 Visa = {
   update_status: function(id){
     $("tr[data-id="+id+"] td.visa_status").append("<img src='/images/loading-spinner.gif' alt='spinner' />");
-    $.get('/visa_applications/'+id+'/update_status',function(data){
+    $.get($("tr[data-id="+id+"] a.update_visa_status").attr("href"),function(data){
       visa_application = data;
       $("tr[data-id="+id+"] td.visa_status").text(visa_application.status+"("+visa_application.updated_at+")").effect("highlight");
     });

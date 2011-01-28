@@ -1,10 +1,16 @@
 UkVisa::Application.routes.draw do
   [:visa_applications,:uk_visa_applications,:dk_visa_applications].each do |r|
-    resources r, :controller => "visa_applications" do
-      member do
-        get 'update_status'
-      end
-    end
+    resources r, :controller => "visa_applications", :only => ['index']
+  end
+
+  scope "/admin" do
+     [:visa_applications,:uk_visa_applications,:dk_visa_applications].each do |r|
+       resources r, :controller => "visa_applications" do
+         member do
+           get 'update_status'
+         end
+       end
+     end
   end
   
   root :to => 'visa_applications#index'
