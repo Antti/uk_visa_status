@@ -48,7 +48,8 @@ class VisaApplicationsController < ApplicationController
   # POST /visa_applications
   # POST /visa_applications.xml
   def create
-    @visa_application = VisaApplication.new(params[:visa_application])
+    klass = params[:visa_application][:type].constantize
+    @visa_application = klass.new(params[:visa_application])
 
     respond_to do |format|
       if @visa_application.save
