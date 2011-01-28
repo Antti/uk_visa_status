@@ -11,7 +11,7 @@ class VisaApplicationsController < ApplicationController
     end
   end
 
-  before_filter :authenticate, :only => [:edit, :destroy, :update]
+  before_filter :authenticate, :except => [:index, :show]
   def index
     @visa_applications = VisaApplication.all
 
