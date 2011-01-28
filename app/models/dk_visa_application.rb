@@ -1,7 +1,7 @@
 class DkVisaApplication < VisaApplication
-  validate :reference_number, :format => %r{\w{4}/\d{6}/\d{4}}
+  validates :reference_number, :format => %r{\w{4}/\d{6}/\d{4}}
   def fetch_new_status
-    page = Mechanize.new{|n| n.log = Logger.new(STDOUT)}.get("https://www.visaservices.firm.in/Denmark-Global-Tracking/TrackingParam.aspx?P=xTsyV66sjtxnpCJBo4njvBlHEVb7OmzOTHTEx9q1H7Y=")
+    page = Mechanize.new.get("https://www.visaservices.firm.in/Denmark-Global-Tracking/TrackingParam.aspx?P=xTsyV66sjtxnpCJBo4njvBlHEVb7OmzOTHTEx9q1H7Y=")
     result_page = page.form_with(:name => "aspnetForm") do |f|
       rn = reference_number.split("/")
       f.send("ctl00$CPH$txtR2Part1=",rn[0])

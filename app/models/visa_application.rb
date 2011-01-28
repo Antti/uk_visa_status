@@ -1,7 +1,7 @@
 class VisaApplication < ActiveRecord::Base
   self.include_root_in_json = false
   attr_accessible :type,:name,:reference_number,:date_of_birth
-  validate :reference_number, :format => %r{\w{4}/\d{6}/\d{6}/\d}
+  validates :name, :presence => true
   def update_status
     self.status = fetch_new_status
     if changed?
