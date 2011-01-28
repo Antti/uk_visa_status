@@ -1,3 +1,4 @@
+require 'digest/sha1'
 class VisaApplicationsController < ApplicationController
   # GET /visa_applications
   # GET /visa_applications.xml
@@ -9,6 +10,8 @@ class VisaApplicationsController < ApplicationController
       end
     end
   end
+
+  before_filter :authenticate, :only => [:edit, :destroy, :update]
   def index
     @visa_applications = VisaApplication.all
 
@@ -95,4 +98,12 @@ class VisaApplicationsController < ApplicationController
     @visa_application.update_status
     render :json => @visa_application
   end
+  private
+  def authenticate
+    authenticate_or_request_with_http_basic('Administration') do |username, password|
+      md5_of_password = Digest::SHA1.hexdigest(password)
+      username == 'admin' && md5_of_password == '77d1a9ba4e8434164911fb8184eac3c31bfe7c41'
+    end
+  end
+
 end
