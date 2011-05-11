@@ -6,7 +6,10 @@ class VisaApplication < ActiveRecord::Base
   def update_status
     self.status = fetch_new_status
     if changed?
-      VisaApplicationStatusMailer.status_updated(self, changes).deliver
+      options = if self.notify_email && !self.notify_email.empty?
+        {:to => self.notify_email}
+      end
+      VisaApplicationStatusMailer.status_updated(self, changes,options).deliver
     end
     self.save
   end

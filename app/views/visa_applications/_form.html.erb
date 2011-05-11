@@ -24,6 +24,10 @@
     <%= f.date_select :date_of_birth,:start_year => 1905 %>
   </div>
   <div class="field">
+    <%= f.label :notify_email %><br />
+    <%= f.text_field :notify_email %>
+  </div>
+  <div class="field">
     <%= f.label :type %><br />
     <%= f.select :type, [UkVisaApplication,DkVisaApplication].map(&:to_s),  %>
   </div>

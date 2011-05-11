@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,6 +10,7 @@ gem 'mechanize'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'whenever', :require => false
 
+gem 'thin'
 # Use unicorn as the web server
 # gem 'unicorn'
 
