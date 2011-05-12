@@ -4,6 +4,7 @@ class VisaApplicationStatusMailer < ActionMailer::Base
   def status_updated(visa_application, changes, options={})
     @visa_application = visa_application
     @changes = changes
-    mail(:subject => "Visa Application Status changed", options)
+    options.merge :subject => "Visa Application Status changed"
+    mail(options)
   end
 end

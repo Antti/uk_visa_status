@@ -8,6 +8,8 @@ class VisaApplication < ActiveRecord::Base
     if changed?
       options = if self.notify_email && !self.notify_email.empty?
         {:to => self.notify_email}
+      else
+        {}
       end
       VisaApplicationStatusMailer.status_updated(self, changes,options).deliver
     end
