@@ -11,7 +11,8 @@ class VisaApplicationsController < ApplicationController
     end
   end
 
-  before_filter :authenticate, :except => [:index, :show]
+  #before_filter :authenticate, :except => [:index, :show]
+  before_filter :check_authentication, :except => [:index, :show]
   def index
     @visa_applications = VisaApplication.all
 
@@ -103,6 +104,12 @@ class VisaApplicationsController < ApplicationController
     authenticate_or_request_with_http_basic('Administrator access') do |username, password|
       pass_hash = Digest::SHA1.hexdigest(password)
       username == 'admin' && pass_hash == '77d1a9ba4e8434164911fb8184eac3c31bfe7c41'
+    end
+  end
+
+  def check_authentication
+    unless current_user
+      redirect_to new_user_session_path
     end
   end
 
