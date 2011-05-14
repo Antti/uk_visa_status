@@ -100,9 +100,9 @@ class VisaApplicationsController < ApplicationController
   end
   private
   def authenticate
-    authenticate_or_request_with_http_basic('Administration') do |username, password|
-      md5_of_password = Digest::SHA1.hexdigest(password)
-      username == 'admin' && md5_of_password == '77d1a9ba4e8434164911fb8184eac3c31bfe7c41'
+    authenticate_or_request_with_http_basic('Administrator access') do |username, password|
+      pass_hash = Digest::SHA1.hexdigest(password)
+      username == 'admin' && pass_hash == '77d1a9ba4e8434164911fb8184eac3c31bfe7c41'
     end
   end
 
