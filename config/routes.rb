@@ -1,4 +1,6 @@
 UkVisa::Application.routes.draw do
+  devise_for :users
+
   visa_types = [:visa_applications,:uk_visa_applications,:dk_visa_applications]
   visa_types.each do |r|
     resources r, :controller => "visa_applications" do#, :only => ['index','show']

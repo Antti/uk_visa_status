@@ -11,6 +11,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'whenever', :require => false
 
 gem 'thin'
+gem 'devise'
 # Use unicorn as the web server
 # gem 'unicorn'
 
