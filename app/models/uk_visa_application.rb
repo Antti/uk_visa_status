@@ -14,4 +14,8 @@ class UkVisaApplication < VisaApplication
   def self.flag
     'gb'
   end
+
+  def closed?
+    self.status =~ /Case closed/
+  end
 end

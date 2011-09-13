@@ -4,6 +4,7 @@ class VisaApplication < ActiveRecord::Base
   validates :name, :presence => true
   validates :reference_number, :presence => true
   def update_status
+    return false if self.closed?
     self.status = fetch_new_status
     if changed?
       options = if self.notify_email && !self.notify_email.empty?
@@ -18,5 +19,8 @@ class VisaApplication < ActiveRecord::Base
 
   def flag
     self.class.flag
+  end
+  def closed?
+    false
   end
 end

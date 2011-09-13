@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-UkVisa::Application.config.secret_token = '561d6c3665a5f372a1a9d5280578cf98be650ec9168b9ef4c847bd838d97218885a13eee4295db9eafd2421095dccd88df53c2f7307a140b04dcca596c9ae25a'
+UkVisa::Application.config.secret_token = 'b58fa9d4de674e5b40ede911d6d5dde083dc2f900fc65a85d26ee5a44bc1ae847e4f908af15b73ca1b183c1e8adbaf7d02f5007b4ad9477ca61951638db1513c'

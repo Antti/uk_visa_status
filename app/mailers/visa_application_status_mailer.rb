@@ -1,5 +1,5 @@
 class VisaApplicationStatusMailer < ActionMailer::Base
-  default :from => "Andriy's Dmytrenko bot <andrey@reevoo.com>", :to => "andm@ciklum.net, khi@ciklum.net"
+  default :from => "Andriy's Dmytrenko bot <andrey@reevoo.com>", :to => "Andriy Dmytrenko <andm@ciklum.net>, Alina Iurchenko <aliu@ciklum.net>"
 
   def status_updated(visa_application, changes, options={})
     @visa_application = visa_application
