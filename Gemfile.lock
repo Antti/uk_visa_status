@@ -145,7 +145,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
-  jquery-rails (>= 0.2.6)
+  jquery-rails
   mechanize
   oa-oauth
   oa-openid
