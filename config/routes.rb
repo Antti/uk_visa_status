@@ -1,5 +1,5 @@
 UkVisa::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   visa_types = [:visa_applications,:uk_visa_applications,:dk_visa_applications]
   visa_types.each do |r|
