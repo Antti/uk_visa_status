@@ -3,10 +3,13 @@ class VisaApplication < ActiveRecord::Base
   attr_accessible :type,:name,:reference_number,:date_of_birth
   validates :name, :presence => true
   validates :reference_number, :presence => true
+
+  scope :not_closed, where("status != 'closed'")
   def update_status
     return false if self.closed?
-    self.status = fetch_new_status
+    self.status_text = fetch_new_status
     if changed?
+      parse_status
       options = if self.notify_email && !self.notify_email.empty?
         {:to => self.notify_email}
       else
@@ -21,6 +24,9 @@ class VisaApplication < ActiveRecord::Base
     self.class.flag
   end
   def closed?
-    false
+    status == 'closed'
+  end
+  def parse_status
+    raise 'Not implemented'
   end
 end

@@ -15,7 +15,10 @@ class UkVisaApplication < VisaApplication
     'gb'
   end
 
-  def closed?
-    self.status =~ /Case closed/
+  def parse_status
+    self.status = case status_text
+    when /Case closed/
+      'closed'
+    end
   end
 end

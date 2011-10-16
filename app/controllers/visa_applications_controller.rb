@@ -11,8 +11,9 @@ class VisaApplicationsController < ApplicationController
   end
 
   before_filter :check_authentication, :except => [:index, :show]
+
   def index
-    @visa_applications = VisaApplication.all
+    @visa_applications = params.has_key?(:all) ? VisaApplication.all : VisaApplication.not_closed
     respond_with @visa_applications
   end
 

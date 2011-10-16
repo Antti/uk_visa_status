@@ -17,7 +17,7 @@ Visa = (function(){
       var row = $("tr[data-id="+id+"]");
       row.find("td.visa_status").append("<img class='spinner' src='/assets/loading-spinner.gif' alt='spinner' />");
       $.get(row.find("a.update_visa_status").attr("href"),function(visa_application){
-        row.find("span.status").text(visa_application.status);
+        row.find("span.status").text(visa_application.status_text);
         row.find("span.notes").text("Updated at "+visa_application.updated_at)
         row.find("td.visa_status").find('img.spinner').remove();
       });

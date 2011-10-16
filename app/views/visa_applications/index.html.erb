@@ -1,5 +1,11 @@
 <%= stylesheet_link_tag 'fancy_table' %>
+<header>
 <h1>Listing Visa Applications</h1>
+</header>
+<section>
+<% if @visa_applications.empty? %>
+<%= link_to "Show all applications", url_for(:all => true)%>
+<% else%>
 <table class="fancy" id="applications-list">
   <thead>
   <tr>
@@ -19,7 +25,7 @@
     <td class='no_wrap'><%= visa_application.name %>&nbsp;<%= flag_img(visa_application.flag)%></td>
     <!-- ><td><%= visa_application.reference_number %></td> -->
     <td class='no_wrap'><%= visa_application.date_of_birth %></td>
-    <td class='visa_status'><span class="status"><%= visa_application.status %></span><span class="notes">Updated at: <%= visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")%></span></td>
+    <td class='visa_status'><span class="status"><%= visa_application.status_text %></span><span class="notes">Updated at: <%= visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")%></span></td>
     <td><%= link_to 'Check Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status' %></td>
     <td><%= link_to 'Show', visa_application %></td>
     <td><%= link_to 'Edit', edit_visa_application_path(visa_application) %></td>
@@ -27,7 +33,10 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Visa application', new_visa_application_path %>
+<% end %>
+</section>
+<nav>
+  <div>
+  <%= link_to 'New Visa application', new_visa_application_path %>
+  </div>
+</nav>

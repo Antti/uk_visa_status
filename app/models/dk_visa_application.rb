@@ -15,7 +15,10 @@ class DkVisaApplication < VisaApplication
   def self.flag
     'dk'
   end
-  def closed?
-    self.status =~ /has been delivered over the counter/
+  def parse_status
+    self.status = case status_text
+    when /has been delivered over the counter/
+      'closed'
+    end
   end
 end

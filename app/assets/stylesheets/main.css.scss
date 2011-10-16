@@ -12,13 +12,17 @@ body{
   .visa_status {
     font-size: 16px;
   }
+  .flag-icon {
+    float: right;
+  }
+}
+.flag-icon {
+  margin-left: 5px;
 }
 
 .no_wrap {
   white-space: pre;
 }
-
-.flag-icon {
-  margin-left: 5px;
-  float: right;
+nav {
+  margin-top: 25px;
 }
