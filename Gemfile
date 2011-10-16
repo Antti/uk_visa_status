@@ -9,6 +9,7 @@ gem 'sqlite3', :require => 'sqlite3'
 gem 'mechanize'
 gem 'jquery-rails'
 gem 'whenever', :require => false
+gem 'sass-rails'
 
 gem 'thin'
 gem 'devise'
