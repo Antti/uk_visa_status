@@ -20,7 +20,7 @@
     <!-- ><td><%= visa_application.reference_number %></td> -->
     <td class='no_wrap'><%= visa_application.date_of_birth %></td>
     <td class='visa_status'><span class="status"><%= visa_application.status %></span><span class="notes">Updated at: <%= visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")%></span></td>
-    <td><%= link_to 'Update Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status' %></td>
+    <td><%= link_to 'Check Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status' %></td>
     <td><%= link_to 'Show', visa_application %></td>
     <td><%= link_to 'Edit', edit_visa_application_path(visa_application) %></td>
     <td><%= link_to 'Destroy', visa_application, :confirm => 'Are you sure?', :method => :delete %></td>
