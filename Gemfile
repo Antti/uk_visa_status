@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,8 +13,10 @@ gem 'sass-rails'
 
 gem 'thin'
 gem 'devise'
-gem "oa-oauth", :require => "omniauth/oauth"
-gem 'oa-openid', :require => 'omniauth/openid'
+gem 'haml'
+# gem "oa-oauth", :require => "omniauth/oauth"
+# gem 'oa-openid', :require => 'omniauth/openid'
+# gem 'omniauth'
 # Use unicorn as the web server
 # gem 'unicorn'
 

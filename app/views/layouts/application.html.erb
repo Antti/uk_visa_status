@@ -11,7 +11,6 @@
 <% if current_user %>
   Signed in as <%= current_user.email %> <%= link_to "Sign out", destroy_user_session_path %>
 <% else %>
-  <%= link_to "Sign in with google", user_omniauth_authorize_path(:google)%>
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
 </div>
