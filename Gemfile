@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'whenever', :require => false
 gem 'sass-rails'
 
-gem 'thin'
+gem 'puma'
 gem 'devise'
 gem 'haml'
 # gem "oa-oauth", :require => "omniauth/oauth"
