@@ -19,6 +19,8 @@ class UkVisaApplication < VisaApplication
     self.status = case status_text
     when /Case closed/
       'closed'
+    else
+      'open'
     end
   end
 end
