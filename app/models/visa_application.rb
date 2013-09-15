@@ -15,9 +15,7 @@ class VisaApplication < ActiveRecord::Base
     self.status_text = fetch_new_status
     if changed?
       parse_status
-      options = {}
-      options[:to] = self.notify_email if self.notify_email.present?
-      VisaApplicationStatusMailer.status_updated(self, changes, options).deliver
+      VisaApplicationStatusMailer.status_updated(self, changes).deliver
     end
     self.save
   end
