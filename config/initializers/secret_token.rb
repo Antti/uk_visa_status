@@ -1,7 +1,12 @@
 # Be sure to restart your server when you modify this file.
 
-# Your secret key for verifying the integrity of signed cookies.
+# Your secret key is used for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
+
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-UkVisa::Application.config.secret_token = 'b58fa9d4de674e5b40ede911d6d5dde083dc2f900fc65a85d26ee5a44bc1ae847e4f908af15b73ca1b183c1e8adbaf7d02f5007b4ad9477ca61951638db1513c'
+# You can use `rake secret` to generate a secure secret key.
+
+# Make sure your secret_key_base is kept private
+# if you're sharing your code publicly.
+UkVisa::Application.config.secret_key_base = '4f1d003b49ade5714b2157348d568ea8ffe0e978871998f919419639eb9d70ff88527b9de514913f64453d81b02f69531278d3039f5d9cd6b5c6560fff5c0f4b'

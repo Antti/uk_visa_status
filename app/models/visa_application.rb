@@ -1,6 +1,6 @@
 class VisaApplication < ActiveRecord::Base
   self.include_root_in_json = false
-  attr_accessible :type,:name,:reference_number,:date_of_birth, :notify_email
+#  attr_accessible :type,:name,:reference_number,:date_of_birth, :notify_email
   validates :name, :presence => true
   validates :reference_number, :presence => true
 

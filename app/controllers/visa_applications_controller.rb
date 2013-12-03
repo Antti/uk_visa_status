@@ -32,8 +32,7 @@ class VisaApplicationsController < ApplicationController
   end
 
   def create
-    klass = params[:visa_application][:type].constantize
-    @visa_application = klass.new(params[:visa_application])
+    @visa_application = VisaApplication.new(visa_application_attributes)
 
     respond_to do |format|
       if @visa_application.save
@@ -50,7 +49,7 @@ class VisaApplicationsController < ApplicationController
     @visa_application = VisaApplication.find(params[:id])
 
     respond_to do |format|
-      if @visa_application.update_attributes(params[:visa_application])
+      if @visa_application.update_attributes(visa_application_attributes)
         format.html { redirect_to(@visa_application, :notice => 'Visa application was successfully updated.') }
         format.json  { head :ok }
       else
@@ -76,6 +75,9 @@ class VisaApplicationsController < ApplicationController
     render :json => @visa_application
   end
   private
+  def visa_application_attributes
+    params.require(:visa_application).permit(:type, :name, :reference_number, :date_of_birth, :notify_email)
+  end
   def check_authentication
     unless current_user
       redirect_to new_user_session_path
