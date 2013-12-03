@@ -4,7 +4,7 @@ class VisaApplication < ActiveRecord::Base
   validates :name, :presence => true
   validates :reference_number, :presence => true
 
-  scope :not_closed, where("status != 'closed'")
+  scope :not_closed, -> { where("status != 'closed'") }
 
   before_save do
     self.status = "open" if new_record?
@@ -16,8 +16,8 @@ class VisaApplication < ActiveRecord::Base
     if changed?
       parse_status
       VisaApplicationStatusMailer.status_updated(self, changes).deliver
+      self.save
     end
-    self.save
   end
 
   def flag
