@@ -14,8 +14,8 @@ class VisaApplication < ActiveRecord::Base
     self.status_text = fetch_status
     if changed?
       parse_status
-      VisaApplicationStatusMailer.status_updated(self, changes).deliver
       self.save!
+      VisaApplicationStatusMailer.status_updated(self, changes).deliver
     end
   end
 
