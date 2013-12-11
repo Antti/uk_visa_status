@@ -3,11 +3,7 @@ class VisaApplicationsController < ApplicationController
   respond_to :html, :json
 
   before_filter do
-    [:uk_visa_application, :dk_visa_application].each do |type|
-      if va = params[type]
-        params[:visa_application] = va
-      end
-    end
+    params[:visa_application] = [:uk_visa_application, :dk_visa_application].find{|type| params[type]}
   end
 
   before_filter :check_authentication, :except => [:index, :show]
@@ -71,7 +67,7 @@ class VisaApplicationsController < ApplicationController
 
   def update_status
     @visa_application = VisaApplication.find(params[:id])
-    @visa_application.update_status
+    @visa_application.update_status!
     render :json => @visa_application
   end
   private

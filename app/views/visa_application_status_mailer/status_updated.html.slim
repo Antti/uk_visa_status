@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  body
+    h1 Following application have been updated
+    p
+      | Name: #{@visa_application.name}
+    - @changes.each do |name,change|
+      p
+        | Old #{name}: #{change[0]}
+        br/
+        | New #{name}: #{change[1]}
+    p Thanks for using this tool and have a great day!

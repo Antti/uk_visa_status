@@ -13,7 +13,7 @@ gem 'sass-rails'
 
 gem 'puma'
 gem 'devise'
-gem 'haml'
+gem 'slim'
 # gem "oa-oauth", :require => "omniauth/oauth"
 # gem 'oa-openid', :require => 'omniauth/openid'
 # gem 'omniauth'

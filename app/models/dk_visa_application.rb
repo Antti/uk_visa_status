@@ -1,6 +1,7 @@
 class DkVisaApplication < VisaApplication
   validates :reference_number, :format => %r{\w{4}/\d{6}/\d{4}}
-  def fetch_new_status
+
+  def fetch_status
     page = Mechanize.new.get("https://www.visaservices.firm.in/Denmark-Global-Tracking/TrackingParam.aspx?P=xTsyV66sjtxnpCJBo4njvBlHEVb7OmzOTHTEx9q1H7Y=")
     result_page = page.form_with(:name => "aspnetForm") do |f|
       rn = reference_number.split("/")
@@ -20,6 +21,8 @@ class DkVisaApplication < VisaApplication
     self.status = case status_text
     when /has been delivered over the counter/
       'closed'
+    else
+      'open'
     end
   end
 end
