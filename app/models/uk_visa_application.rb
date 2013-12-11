@@ -1,6 +1,10 @@
 class UkVisaApplication < VisaApplication
   validates :reference_number, :format => %r{\w{4}/\d{6}/\d{6}/\d}
 
+  def self.model_name
+    VisaApplication.model_name
+  end
+
   def fetch_status
     page = Mechanize.new.get('https://www.vfs.org.in/UKG-PassportTracking/ApplicantTrackStatus.aspx?Data=zB/rldwRJCtWdUiUjektSA==')
     result_page = page.form_with(:name => "form1") do |f|

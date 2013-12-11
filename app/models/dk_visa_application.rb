@@ -1,6 +1,10 @@
 class DkVisaApplication < VisaApplication
   validates :reference_number, :format => %r{\w{4}/\d{6}/\d{4}}
 
+  def self.model_name
+    VisaApplication.model_name
+  end
+
   def fetch_status
     page = Mechanize.new.get("https://www.visaservices.firm.in/Denmark-Global-Tracking/TrackingParam.aspx?P=xTsyV66sjtxnpCJBo4njvBlHEVb7OmzOTHTEx9q1H7Y=")
     result_page = page.form_with(:name => "aspnetForm") do |f|

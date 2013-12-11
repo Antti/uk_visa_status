@@ -14,6 +14,8 @@ gem 'puma'
 gem 'devise'
 gem 'slim'
 gem 'uglifier'
+gem 'coffee-rails'
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 
 group :production do
   gem 'pg'
