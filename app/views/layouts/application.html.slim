@@ -7,10 +7,17 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tag
   body
-    .container
-      #login-info.small
+    .navbar.navbar-fixed-top.navbar-default role="navigation"
+      .container
+        .navbar-header
+          .navbar-brand
+            a(href="/") Visa Application Tracker
         - if current_user
-          | Signed in as #{current_user.email} #{link_to "[Sign out]", destroy_user_session_path, method: :delete}
+          a.btn.btn-default.navbar-btn href="#{destroy_user_session_path}" data-method="delete" Sign out
+          .navbar-text.navbar-right
+            ' Signed in as
+            =current_user.email
         - else
-          = link_to "[Sign in]", new_user_session_path
+          a.btn.btn-default.navbar-btn href="#{new_user_session_path}" Sign in
+    .container
       = yield

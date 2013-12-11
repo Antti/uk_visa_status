@@ -11,10 +11,8 @@ section
           /th Reference number
           /th Birth date
           th Status
-          th
-          th
-          th
-          th
+          - if can_edit?
+            th
       - @visa_applications.each do |visa_application|
         tr data-id=visa_application.id 
           td.lead.text-primary
@@ -27,10 +25,13 @@ section
             br/
             small.notes.text-muted
               | Updated at: #{visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")}
-          td= link_to 'Check Status', update_status_visa_application_path(visa_application), class: 'btn btn-primary update_visa_status'
-          td= link_to 'Show', visa_application, class: 'btn btn-default'
-          td= link_to 'Edit', edit_visa_application_path(visa_application), class: 'btn btn-default'
-          td= link_to 'Destroy', visa_application, data: { confirm: 'Are you sure?' }, :method => :delete, class: 'btn btn-danger'
-nav
-  div
-    = link_to 'New Visa application', new_visa_application_path, class: 'btn btn-success'
+          - if can_edit?
+            td
+              = link_to 'Check', update_status_visa_application_path(visa_application), class: 'btn btn-primary update_visa_status'
+              = link_to 'Show', visa_application, class: 'btn btn-default'
+              = link_to 'Edit', edit_visa_application_path(visa_application), class: 'btn btn-default'
+              = link_to 'Destroy', visa_application, data: { confirm: 'Are you sure?' }, :method => :delete, class: 'btn btn-danger'
+- if can_edit?
+  nav
+    div
+      = link_to 'New Visa application', new_visa_application_path, class: 'btn btn-success'
