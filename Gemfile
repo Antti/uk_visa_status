@@ -13,6 +13,7 @@ gem 'sass-rails'
 gem 'puma'
 gem 'devise'
 gem 'slim'
+gem 'uglifier'
 
 group :production do
   gem 'pg'
