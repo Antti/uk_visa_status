@@ -10,7 +10,7 @@ section
         tr
           th Name
           /th Reference number
-          th Birth date
+          /th Birth date
           th Status
           th
           th
@@ -22,15 +22,15 @@ section
             = visa_application.name
             | &nbsp;#{flag_img(visa_application.flag)}
           /td.loud= visa_application.reference_number
-          td.no_wrap= visa_application.date_of_birth
+          /td.no_wrap= visa_application.date_of_birth
           td.visa_status
             span.status= visa_application.status_text
             span.notes
               | Updated at: #{visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")}
           td= link_to 'Check Status', update_status_visa_application_path(visa_application), :class => 'update_visa_status'
-          td= link_to 'Show', visa_application
+          td= link_to 'Show', visa_application_path(visa_application)
           td= link_to 'Edit', edit_visa_application_path(visa_application)
-          td= link_to 'Destroy', visa_application, :confirm => 'Are you sure?', :method => :delete
+          td= link_to 'Destroy', visa_application_path(visa_application), data: { confirm: 'Are you sure?' }, :method => :delete
 nav
   div
     = link_to 'New Visa application', new_visa_application_path

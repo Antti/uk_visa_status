@@ -1,12 +1,11 @@
 require 'digest/sha1'
 class VisaApplicationsController < ApplicationController
   respond_to :html, :json
+  before_filter :check_authentication, except: [:index]
 
   before_filter do
-    params[:visa_application] = [:uk_visa_application, :dk_visa_application].find{|type| params[type]}
+    params[:visa_application] = params[[:uk_visa_application, :dk_visa_application].find{|type| params[type]}]
   end
-
-  before_filter :check_authentication, :except => [:index, :show]
 
   def index
     @visa_applications = params.has_key?(:all) ? VisaApplication.all : VisaApplication.not_closed
@@ -73,11 +72,6 @@ class VisaApplicationsController < ApplicationController
   private
   def visa_application_attributes
     params.require(:visa_application).permit(:type, :name, :reference_number, :date_of_birth, :notify_email)
-  end
-  def check_authentication
-    unless current_user
-      redirect_to new_user_session_path
-    end
   end
 
 end
