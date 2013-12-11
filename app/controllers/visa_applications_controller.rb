@@ -3,10 +3,6 @@ class VisaApplicationsController < ApplicationController
   respond_to :html, :json
   before_filter :check_authentication, except: [:index]
 
-  before_filter do
-    params[:visa_application] = params[[:uk_visa_application, :dk_visa_application].find{|type| params[type]}]
-  end
-
   def index
     @visa_applications = params.has_key?(:all) ? VisaApplication.all : VisaApplication.not_closed
     respond_with @visa_applications
