@@ -4,7 +4,8 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Visa Application Tracker
     = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
+    - content_for :foot
+      = javascript_include_tag 'application'
     = csrf_meta_tag
   body
     .navbar.navbar-static-top.navbar-default role="navigation"
@@ -21,3 +22,5 @@ html
           a.btn.btn-default.navbar-btn href="#{new_user_session_path}" Sign in
     .container
       = yield
+
+  = yield :foot

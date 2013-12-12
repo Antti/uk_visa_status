@@ -8,8 +8,6 @@ section
       thead
         tr
           th Name
-          /th Reference number
-          /th Birth date
           th Status
           - if can_edit?
             th
@@ -18,8 +16,6 @@ section
           td.lead.text-primary
             = visa_application.name
             | &nbsp;#{flag_img(visa_application.flag)}
-          /td.loud= visa_application.reference_number
-          /td.no_wrap= visa_application.date_of_birth
           td.visa_status
             span.status.lead= visa_application.status_text
             br/
@@ -27,10 +23,11 @@ section
               | Updated at: #{visa_application.updated_at.strftime("%Y-%m-%d %H:%M:%S")}
           - if can_edit?
             td
-              = link_to 'Check', update_status_visa_application_path(visa_application), class: 'btn btn-primary update_visa_status'
-              = link_to 'Show', visa_application, class: 'btn btn-default'
-              = link_to 'Edit', edit_visa_application_path(visa_application), class: 'btn btn-default'
-              = link_to 'Destroy', visa_application, data: { confirm: 'Are you sure?' }, :method => :delete, class: 'btn btn-danger'
+              a.btn.btn-primary.update_visa_status.ladda-button data-style="zoom-out" data-action="#{update_status_visa_application_path(visa_application)}"
+                span.ladda-label Check
+              a.btn.btn-default href="#{url_for(visa_application)}" Show
+              a.btn.btn-default href="#{edit_visa_application_path(visa_application)}" Edit
+              a.btn.btn-danger href="#{url_for(visa_application)}" data-method="delete" data-confirm="Are you sure?" Destroy
 - if can_edit?
   nav
     div
