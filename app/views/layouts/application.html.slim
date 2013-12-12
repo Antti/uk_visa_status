@@ -8,16 +8,14 @@ html
       = javascript_include_tag 'application'
     = csrf_meta_tag
   body
-    .navbar.navbar-static-top.navbar-default role="navigation"
+    nav.navbar.navbar-static-top.navbar-default role="navigation"
       .container
         .navbar-header
           .navbar-brand
             a(href="/") Visa Application Tracker
         - if current_user
           a.btn.btn-default.navbar-btn href="#{destroy_user_session_path}" data-method="delete" Sign out
-          .navbar-text.navbar-right
-            ' Signed in as
-            =current_user.email
+          span.navbar-text.navbar-right Signed in as #{current_user.email}
         - else
           a.btn.btn-default.navbar-btn href="#{new_user_session_path}" Sign in
     .container
