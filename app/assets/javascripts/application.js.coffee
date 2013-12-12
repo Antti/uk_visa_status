@@ -18,9 +18,9 @@ Visa = (->
     l.start()
     $.get row.find(".update_visa_status").data("action"), (visa_application) ->
       row.find(".status").text visa_application.status_text
-      row.find(".notes").text "Updated at #{visa_application.updated_at}"
+      date = visa_application.updated_at.replace('T', ' ').substr(0,19)
+      row.find(".notes").text "Updated at: #{date}"
       l.stop()
-
 )()
 $().ready ->
   Visa.init()
