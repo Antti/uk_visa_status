@@ -8,6 +8,10 @@ class VisaApplicationsController < ApplicationController
     respond_with @visa_applications
   end
 
+  def share
+    @visa_applications = VisaApplication
+  end
+
   def show
     @visa_application = VisaApplication.find(params[:id])
     respond_with @visa_application
@@ -67,7 +71,7 @@ class VisaApplicationsController < ApplicationController
   end
   private
   def visa_application_attributes
-    params.require(:visa_application).permit(:type, :name, :reference_number, :date_of_birth, :notify_email)
+    params.require(:visa_application).permit(:application_type, :name, :reference_number, :date_of_birth, :notify_email)
   end
 
 end
